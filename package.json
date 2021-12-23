@@ -1,0 +1,31 @@
+{
+  "name": "project-hex-dex",
+  "version": "1.0.0",
+  "description": "Decentralized Exchange built using Solidity for Ethereum and EVM compatible blockchains.",
+  "main": "index.js",
+  "scripts": {
+    "test": "truffle test",
+    "compile": "truffle compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kasunkv/project-hex-dex.git"
+  },
+  "keywords": [
+    "Solidity",
+    "Smart Contracts",
+    "DEX",
+    "Exchange",
+    "Decentralized Exchange",
+    "Web3"
+  ],
+  "author": "Kasun Kodagoda <kvkrusl@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kasunkv/project-hex-dex/issues"
+  },
+  "homepage": "https://github.com/kasunkv/project-hex-dex#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.4.1"
+  }
+}
