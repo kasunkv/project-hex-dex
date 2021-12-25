@@ -15,11 +15,15 @@ contract Wallet is Ownable {
 	mapping(bytes32 => Token) public tokens;
 
 
-	mapping(address => mapping(bytes32 => uint256)) public balances;
+	mapping(address => mapping(bytes32 => uint256)) internal balances;
 
 	modifier tokenExists(bytes32 _ticker) {
 		require(tokens[_ticker].tokenAddress != address(0), "ERC 20 token is not added to the dex wallet yet");
 		_;
+	}
+
+	function balanceOf(address _address, bytes32 _ticker) external tokenExists(_ticker) view returns (uint) {
+		return balances[_address][_ticker];
 	}
 
 	function addToken(bytes32 _ticker, address _tokenAddress) external onlyOwner {
@@ -40,5 +44,9 @@ contract Wallet is Ownable {
 		balances[msg.sender][_ticker] = currentTokenBalance - _amount;
 
 		IERC20(tokens[_ticker].tokenAddress).transfer(msg.sender, _amount);
+	}
+
+	function depositEth() public payable {
+		balances[msg.sender]["ETH"] += msg.value;
 	}
 }
