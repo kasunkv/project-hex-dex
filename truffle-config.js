@@ -75,7 +75,15 @@ module.exports = {
 
   // Set default mocha options here, use special reporters etc.
   mocha: {
-    // timeout: 100000
+    timeout: 100000,
+    reporter: "eth-gas-reporter",
+    reporterOptions: {
+      excludeContracts: ["Migrations"],
+      currency: "USD",
+      token: "ETH",
+      coinmarketcap: "dac4c40e-2aae-4cc0-848a-e54edb4e6406",
+      gasPriceApi: "https://api.etherscan.io/api?module=proxy&action=eth_gasPrice",
+    },
   },
 
   // Configure your compilers
@@ -94,6 +102,7 @@ module.exports = {
     },
   },
 
+  plugins: ["solidity-coverage"],
   // Truffle DB is currently disabled by default; to enable it, change enabled:
   // false to enabled: true. The default storage location can also be
   // overridden by specifying the adapter settings, as shown in the commented code below.
