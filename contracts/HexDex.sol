@@ -100,10 +100,9 @@ contract HexDex is Wallet {
 		}
 
 		// Remove 100% filled order from the order book
+		while (orders.length > 0 && orders[0].filled == orders[0].amount) {
 
-		while (orders[0].filled == orders[0].amount && orders.length > 0) {
-
-			for (uint i = 0; i < orders.length; i++) {
+			for (uint i = 0; i < orders.length - 1; i++) {
 				orders[i] = orders[i + 1];
 			}
 			orders.pop();
